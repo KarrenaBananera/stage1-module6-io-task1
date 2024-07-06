@@ -15,7 +15,7 @@ public class FileReader {
                 profile.append((char) symbol);
             }
             profile = new StringBuilder(profile.toString().replaceAll(".*: ", ""));
-            String[] data = profile.toString().split("\n");
+            String[] data = profile.toString().split(System.lineSeparator());
              return new Profile(data[0],Integer.valueOf(data[1]),data[2],Long.valueOf(data[3]));
         }
         catch (IOException exception)
