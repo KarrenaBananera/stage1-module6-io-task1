@@ -9,13 +9,13 @@ public class FileReader {
         try(java.io.FileReader reader = new java.io.FileReader(file))
         {
             int symbol;
-            String profile = "";
+            StringBuilder profile = new StringBuilder();
             while ((symbol = reader.read()) != -1)
             {
-                profile += (char)symbol;
+                profile.append((char) symbol);
             }
-            profile = profile.replaceAll(".*: ","");
-            String[] data = profile.split("\r\n");
+            profile = new StringBuilder(profile.toString().replaceAll(".*: ", ""));
+            String[] data = profile.toString().split("\n");
              return new Profile(data[0],Integer.valueOf(data[1]),data[2],Long.valueOf(data[3]));
         }
         catch (IOException exception)
